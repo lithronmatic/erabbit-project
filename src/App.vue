@@ -1,6 +1,9 @@
 <template>
   <div>
-    App
+    <div>
+      {{$store.state.user.profile.account}}
+    </div>
+    <button @click="$store.commit('user/setUser', {account: 'zhousg'})">设置用户信息</button>
   </div>
 </template>
 
