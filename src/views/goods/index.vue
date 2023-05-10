@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  goods
 </template>
 
 <script>

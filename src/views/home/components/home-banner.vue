@@ -1,0 +1,44 @@
+<template>
+  <div class="home-banner">
+    <XtxCarousel :sliders="sliders" :autoplay="true" />
+  </div>
+</template>
+<script>
+import { findBanner } from '@/api/home'
+import { onMounted, ref } from 'vue'
+export default {
+  name: 'HomeBanner',
+  setup () {
+    const sliders = ref([])
+    onMounted(() => {
+      findBanner().then(data => {
+        console.log('轮播图数据', data.data.result)
+        sliders.value = data.data.result
+      })
+    })
+
+    return {
+      sliders
+    }
+  }
+}
+</script>
+<style scoped lang="less">
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 98
+}
+
+.xtx-carousel {
+  ::v-deep .carousel-btn.prev {
+    left: 270px;
+  }
+  ::v-deep .carousel-indicator {
+    padding-left: 250px;
+  }
+}
+</style>
